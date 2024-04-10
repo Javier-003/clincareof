@@ -8,7 +8,7 @@ from paciente_update import init_usuario_update
 from paciente_delete import init_usuario_delete
 db = dbase.dbConnection()
 import base64
-from bson import ObjectId
+from bson.objectid import ObjectId
 from flask import send_file
 from logic import nocache, obtener_usuario_por_numero_social, obtener_historial_clinico, generar_captcha
 app = Flask(__name__)
