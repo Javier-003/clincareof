@@ -10,7 +10,7 @@ db = dbase.dbConnection()
 import base64
 from bson.objectid import ObjectId
 from flask import send_file
-from logic import nocache, obtener_usuario_por_numero_social, obtener_historial_clinico, generar_captcha
+from logic import nocache, obtener_doctor, obtener_usuario_por_numero_social, obtener_historial_clinico, generar_captcha
 app = Flask(__name__)
 app.secret_key = 'M0i1Xc$GfPw3Yz@2SbQ9lKpA5rJhDtE7'
 init_routes(app)
@@ -23,21 +23,29 @@ init_usuario_delete(app)
 @app.route('/buscar_usuario', methods=['GET', 'POST'])
 @nocache
 def buscar_usuario():
-    if request.method == 'POST':
-        numero_social = request.form['numero_social']
+    correo = session.get('correo')
+    if correo:
+        # Verificar si el usuario es un admin en tu sistema
+        usuario = obtener_doctor(correo)
+        if usuario and usuario['es_admin']:
+            if request.method == 'POST':
+                numero_social = request.form['numero_social']
 
-        # Buscar en la base de datos el usuario por número de seguro social
-        usuario = obtener_usuario_por_numero_social(numero_social)
+                # Buscar en la base de datos el usuario por número de seguro social
+                usuario_encontrado = obtener_usuario_por_numero_social(numero_social)
 
-        if usuario:
-            # Usuario encontrado, obtener su historial clínico
-            historial_clinico = obtener_historial_clinico(usuario['_id'])
-            return render_template('admin.html', usuario=usuario, historial_clinico=historial_clinico)
-        else:
-            flash('No se encontró información para el número de seguro social proporcionado.')
+                if usuario_encontrado:
+                    # Usuario encontrado, obtener su historial clínico
+                    historial_clinico = obtener_historial_clinico(usuario_encontrado['_id'])
+                    return render_template('admin.html', usuario=usuario_encontrado, historial_clinico=historial_clinico)
+                else:
+                    flash('No se encontró información para el número de seguro social proporcionado.')
 
-    # Si es GET o si no se encontró el usuario, mostrar el formulario de búsqueda
-    return redirect(url_for('admin'))
+            # Si es GET o si no se encontró el usuario, mostrar el formulario de búsqueda
+            return render_template('buscar_usuario.html')
+
+    # Si no es un admin o no hay sesión iniciada, redirigir al login
+    return redirect(url_for('login'))
 
 
 
