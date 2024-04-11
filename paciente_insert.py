@@ -236,7 +236,7 @@ def init_usuario(app):
         else:
             flash('Usuario no ha iniciado sesión')
 
-        return redirect(url_for('mi_historial'))
+        return redirect(url_for('paciente'))
     
     @app.route('/Añadir_vacuna', methods=['POST'])
     def Añadir_vacuna():
