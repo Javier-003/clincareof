@@ -57,13 +57,13 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="fecha">Numero de seguro social:</label>
-                                        <input type="number" class="form-control" id="numeroSocial" name="numeroSocial" required>
+                                        <input type="number" class="form-control" id="numeroSocial" name="numeroSocial" required minlength="10">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="number" class="form-control" id="telefono" name="telefono" required>
+                                        <input type="text" pattern="[0-9]*" class="form-control" id="telefono" name="telefono" required minlength="10">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="estado">Estado:</label>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="cp">Código Postal:</label>
-                                        <input type="text" class="form-control" id="cp" name="cp" required>
+                                        <input type="text" pattern="[0-9]*" class="form-control" id="cp" name="cp" required minlength="5">
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-block">Registrarse</button>

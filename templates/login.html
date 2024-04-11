@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="captcha">CAPTCHA:</label>
-                    <h4> {{ captcha }} </h4> 
+                    <h4 id="inputNoCopy" readonly onfocus="this.select()" onmousedown="return false" onkeydown="return false"> {{ captcha }} </h4> 
                     <input type="text" id="captcha" name="captcha" placeholder="Ingresa el CAPTCHA" required>
                 </div>
                 <button class="btn btn-primary btn-block">INICIAR SESIÓN</button>
@@ -58,7 +58,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.getElementById('inputNoCopy').addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+    </script>
 
 </body>
 
