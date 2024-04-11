@@ -76,7 +76,7 @@
 
                                         <div class="form-group">
                                             <label for="N_telefono">Teléfono:</label>
-                                            <input type="text" pattern="[0-9]*" class="form-control" id="N_telefono" name="N_telefono" value="{{ usuario.telefono }}" required minlength="10">
+                                            <input type="text" pattern="[0-9]*" class="form-control" id="N_telefono" name="N_telefono" value="{{ usuario.telefono }}" required maxlength="10" minlength="10">
                                         </div>
                                         <div class="form-group">
                                             <label for="N_correo">Correo:</label>
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="N_cp">Código Postal:</label>
-                                            <input type="text" pattern="[0-9]*" class="form-control" id="N_cp" name="N_cp" value="{{ usuario.cp }}" minlength="5" required>
+                                            <input type="text" pattern="[0-9]*" class="form-control" id="N_cp" name="N_cp" value="{{ usuario.cp }}" maxlength="5" minlength="5" required>
                                         </div>
                                         <input type="hidden" name="id_usuario" value="{{ usuario._id }}">
                                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -154,7 +154,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Telefono:</label>
-                                            <input type="text" class="form-control" value="{{ historial_clinico.contacto_emergencia.telefono_contacto}}" id="telefono_contacto" name="telefono_contacto" required minlength="10">
+                                            <input type="text" class="form-control" value="{{ historial_clinico.contacto_emergencia.telefono_contacto}}" id="telefono_contacto" name="telefono_contacto" required maxlength="10" minlength="10">
                                         </div>
                                         <div class="form-group">
                                             <label>Parentesco con el paciente (esposa, madre, hijo):</label>
