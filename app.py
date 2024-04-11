@@ -21,7 +21,6 @@ init_usuario_delete(app)
 
 
 @app.route('/buscar_usuario', methods=['GET', 'POST'])
-@nocache
 def buscar_usuario():
     if request.method == 'POST':
         numero_social = request.form['numero_social']
