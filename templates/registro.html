@@ -63,7 +63,7 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="telefono">Teléfono:</label>
-                                        <input type="text" pattern="[0-9]*" class="form-control" id="telefono" name="telefono" required maxlength="10" minlength="10">
+                                        <input type="text"  class="form-control" id="telefono" name="telefono" required pattern="^\d{10}$" maxlength="10">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="estado">Estado:</label>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="cp">Código Postal:</label>
-                                        <input type="text" pattern="[0-9]*" class="form-control" id="cp" name="cp" required maxlength="5" minlength="5">
+                                        <input type="text"  class="form-control" id="cp" name="cp" required pattern="^\d{5}$" maxlength="5">
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-block">Registrarse</button>
