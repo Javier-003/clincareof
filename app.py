@@ -20,6 +20,7 @@ init_usuario_delete(app)
 ###############################################################
 
 
+
 @app.route('/buscar_usuario', methods=['GET', 'POST'])
 @nocache
 def buscar_usuario():
@@ -42,7 +43,7 @@ def buscar_usuario():
                     flash('No se encontró información para el número de seguro social proporcionado.')
 
             # Si es GET o si no se encontró el usuario, mostrar el formulario de búsqueda
-            return render_template('buscar_usuario.html')
+            return render_template('admin.html')
 
     # Si no es un admin o no hay sesión iniciada, redirigir al login
     return redirect(url_for('login'))
