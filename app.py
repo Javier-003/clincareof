@@ -94,7 +94,7 @@ def descargar_imagen(usuario_id):
                 imagen_stream = BytesIO(imagen_bin)
                 # Enviar el contenido binario como un archivo adjunto
                 imagen_stream.seek(0)  # Asegurar que la posición del cursor esté al inicio del archivo
-                return send_file(imagen_stream, mimetype='image/jpeg', as_attachment=True, download_name='resultado.jpg')
+                return send_file(imagen_stream, mimetype='image/jpeg', as_attachment=True, download_name='resultado.jpeg')
 
         # Si no se encontró ningún documento adjunto en los resultados de laboratorio
         flash('Imagen no encontrada')
